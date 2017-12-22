@@ -1,1 +1,0 @@
-﻿Example of using 2FA (Email & SMS) in ASP.NET MVC 5 app based on the https://code.msdn.microsoft.com/MVC-5-with-2FA-email-8f26d952/view/Discussions#content
