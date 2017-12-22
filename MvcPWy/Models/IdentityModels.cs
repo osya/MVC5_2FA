@@ -20,8 +20,7 @@ namespace MvcPWy.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", false)
+        private ApplicationDbContext(): base("DefaultConnection", false)
         {
             Database.SetInitializer(new CreateDatabaseIfNotExists<ApplicationDbContext>());
         }

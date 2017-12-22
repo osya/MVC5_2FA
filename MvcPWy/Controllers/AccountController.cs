@@ -9,9 +9,9 @@ using MvcPWy.Models;
 
 namespace MvcPWy.Controllers
 {
-   [Authorize]
-   public class AccountController : Controller
-   {
+    [Authorize]
+    public class AccountController : Controller
+    {
       private ApplicationUserManager _userManager;
 
       public AccountController()
@@ -24,17 +24,11 @@ namespace MvcPWy.Controllers
          SignInManager = signInManager;
       }
 
-       private ApplicationUserManager UserManager
-      {
-         get
-         {
-            return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-         }
-          set
-         {
-            _userManager = value;
-         }
-      }
+        private ApplicationUserManager UserManager
+        {
+            get => _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            set => _userManager = value;
+        }
 
       //
       // GET: /Account/Login
@@ -47,14 +41,11 @@ namespace MvcPWy.Controllers
 
       private ApplicationSignInManager _signInManager;
 
-       private ApplicationSignInManager SignInManager
-      {
-         get
-         {
-            return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-         }
-          set { _signInManager = value; }
-      }
+        private ApplicationSignInManager SignInManager
+        {
+            get => _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            set => _signInManager = value;
+        }
 
     //
     // POST: /Account/Login
@@ -95,7 +86,7 @@ namespace MvcPWy.Controllers
               case SignInStatus.LockedOut:
                  return View("Lockout");
               case SignInStatus.RequiresVerification:
-                 return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                 return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, model.RememberMe });
               case SignInStatus.Failure:
               default:
                  ModelState.AddModelError("", "Invalid login attempt.");
@@ -461,9 +452,9 @@ public async Task<ActionResult> Register(RegisterViewModel model)
             UserId = userId;
          }
 
-          private string LoginProvider { get; set; }
-          private string RedirectUri { get; set; }
-          private string UserId { get; set; }
+          private string LoginProvider { get; }
+          private string RedirectUri { get; }
+          private string UserId { get; }
 
          public override void ExecuteResult(ControllerContext context)
          {
