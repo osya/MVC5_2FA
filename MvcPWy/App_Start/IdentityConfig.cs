@@ -9,9 +9,9 @@ using Microsoft.Owin.Security;
 using MvcPWy.Models;
 using SendGrid;
 using System.Net;
-using System.Configuration;
 using System.Diagnostics;
 using System.Net.Mail;
+using System.Web.Configuration;
 using Twilio;
 
 namespace MvcPWy
@@ -36,8 +36,8 @@ namespace MvcPWy
         myMessage.AddTo(message.Destination);
          
         var credentials = new NetworkCredential(
-            ConfigurationManager.AppSettings["mailAccount"],
-            ConfigurationManager.AppSettings["mailPassword"]
+            WebConfigurationManager.AppSettings["mailAccount"],
+            WebConfigurationManager.AppSettings["mailPassword"]
         );
 
         // Create a Web transport for sending email.
@@ -68,11 +68,11 @@ namespace MvcPWy
       public Task SendAsync(IdentityMessage message)
       {
          var twilio = new TwilioRestClient(
-            ConfigurationManager.AppSettings["TwilioSid"],
-            ConfigurationManager.AppSettings["TwilioToken"]
+            WebConfigurationManager.AppSettings["TwilioSid"],
+            WebConfigurationManager.AppSettings["TwilioToken"]
         );
          var result = twilio.SendMessage(
-             ConfigurationManager.AppSettings["TwilioFromPhone"],
+             WebConfigurationManager.AppSettings["TwilioFromPhone"],
             message.Destination, message.Body);
 
          // Status is one of Queued, Sending, Sent, Failed or null if the number is not valid

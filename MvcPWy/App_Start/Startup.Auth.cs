@@ -60,8 +60,8 @@ public partial class Startup
         //   appSecret: "");
 
         //app.UseGoogleAuthentication(
-        //    clientId:  ConfigurationManager.AppSettings["GoogClientID"],
-        //    clientSecret:  ConfigurationManager.AppSettings["GoogClientSecret"]);
+        //    clientId:  WebConfigurationManager.AppSettings["GoogClientID"],
+        //    clientSecret:  WebConfigurationManager.AppSettings["GoogClientSecret"]);
     }
 }
 }
