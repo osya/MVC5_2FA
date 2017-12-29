@@ -1,6 +1,8 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -20,7 +22,7 @@ namespace MvcPWy.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        private ApplicationDbContext(): base("DefaultConnection", false)
+        private ApplicationDbContext(): base(Environment.ExpandEnvironmentVariables(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString), false)
         {
             Database.SetInitializer(new CreateDatabaseIfNotExists<ApplicationDbContext>());
         }
