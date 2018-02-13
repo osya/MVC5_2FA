@@ -7,6 +7,7 @@
 Used technologies:
 
 - ASP.NET MVC 5
+- AppVeyor
 
 ## Installation
 
