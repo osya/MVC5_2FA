@@ -8,6 +8,7 @@ Used technologies:
 
 - ASP.NET MVC 5
 - AppVeyor
+- Deployed at [AppHarbor](http://mvc52fa.apphb.com/)
 
 ## Installation
 
